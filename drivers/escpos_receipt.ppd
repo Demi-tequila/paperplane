@@ -1,0 +1,159 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "0.5.1"
+*PCFileName: "PBESP.PPD"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Manufacturer: "PaperPlane"
+*ModelName: "PaperPlane ESC/POS Receipt"
+*NickName: "纸飞机 ESC/POS 小票机（58/80 mm，203 dpi）"
+*ShortNickName: "PaperPlane ESC/POS"
+*Product: "(PaperPlane escpos)"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*cupsVersion: 1.4
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/PaperPlane/paperplane"
+*cupsManualCopies: False
+
+*OpenGroup: General/General
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: w227h567
+*PageSize w162h142/小票 57×50: "<</PageSize[161.5748 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w164h283/小票 58×100: "<</PageSize[164.4094 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w164h425/小票 58×150: "<</PageSize[164.4094 425.1969]/ImagingBBox null>>setpagedevice"
+*PageSize w164h567/小票 58×200: "<</PageSize[164.4094 566.9291]/ImagingBBox null>>setpagedevice"
+*PageSize w215h227/小票 76×80: "<</PageSize[215.4331 226.7717]/ImagingBBox null>>setpagedevice"
+*PageSize w227h283/小票 80×100: "<</PageSize[226.7717 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w227h425/小票 80×150: "<</PageSize[226.7717 425.1969]/ImagingBBox null>>setpagedevice"
+*PageSize w227h567/小票 80×200: "<</PageSize[226.7717 566.9291]/ImagingBBox null>>setpagedevice"
+*PageSize w227h850/小票 80×300: "<</PageSize[226.7717 850.3937]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Page Region: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: w227h567
+*PageRegion w162h142/小票 57×50: "<</PageSize[161.5748 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h283/小票 58×100: "<</PageSize[164.4094 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h425/小票 58×150: "<</PageSize[164.4094 425.1969]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h567/小票 58×200: "<</PageSize[164.4094 566.9291]/ImagingBBox null>>setpagedevice"
+*PageRegion w215h227/小票 76×80: "<</PageSize[215.4331 226.7717]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h283/小票 80×100: "<</PageSize[226.7717 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h425/小票 80×150: "<</PageSize[226.7717 425.1969]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h567/小票 80×200: "<</PageSize[226.7717 566.9291]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h850/小票 80×300: "<</PageSize[226.7717 850.3937]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*PaperDimension w162h142/小票 57×50: "161.5748 141.7323"
+*ImageableArea w162h142/小票 57×50: "0.0000 0.0000 161.5748 141.7323"
+*PaperDimension w164h283/小票 58×100: "164.4094 283.4646"
+*ImageableArea w164h283/小票 58×100: "0.0000 0.0000 164.4094 283.4646"
+*PaperDimension w164h425/小票 58×150: "164.4094 425.1969"
+*ImageableArea w164h425/小票 58×150: "0.0000 0.0000 164.4094 425.1969"
+*PaperDimension w164h567/小票 58×200: "164.4094 566.9291"
+*ImageableArea w164h567/小票 58×200: "0.0000 0.0000 164.4094 566.9291"
+*PaperDimension w215h227/小票 76×80: "215.4331 226.7717"
+*ImageableArea w215h227/小票 76×80: "0.0000 0.0000 215.4331 226.7717"
+*PaperDimension w227h283/小票 80×100: "226.7717 283.4646"
+*ImageableArea w227h283/小票 80×100: "0.0000 0.0000 226.7717 283.4646"
+*PaperDimension w227h425/小票 80×150: "226.7717 425.1969"
+*ImageableArea w227h425/小票 80×150: "0.0000 0.0000 226.7717 425.1969"
+*PaperDimension w227h567/小票 80×200: "226.7717 566.9291"
+*ImageableArea w227h567/小票 80×200: "0.0000 0.0000 226.7717 566.9291"
+*PaperDimension w227h850/小票 80×300: "226.7717 850.3937"
+*ImageableArea w227h850/小票 80×300: "0.0000 0.0000 226.7717 850.3937"
+*HWMargins: 0 0 0 0
+*CloseGroup: General
+
+*OpenUI *Resolution/Output Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 203dpi
+*Resolution 203dpi/203 dpi: "<</HWResolution[203 203]>>setpagedevice"
+*Resolution 300dpi/300 dpi: "<</HWResolution[300 300]>>setpagedevice"
+*Resolution 600dpi/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+
+*% ── 以下配置存在 Mac 侧 PPD 里，CUPS 每次作业都会传给驱动 ──
+*% 打印机掉电、重启、换纸都不会丢；改这里等于改这台机器以后每次打印的默认值
+*OpenUI *DeliDpi/DeliDpi: PickOne
+*OrderDependency: 30 AnySetup *DeliDpi
+*DefaultDeliDpi: 203
+*DeliDpi 203/dots per inch: ""
+*CloseUI: *DeliDpi
+*OpenUI *DeliSizeW/DeliSizeW: PickOne
+*OrderDependency: 30 AnySetup *DeliSizeW
+*DefaultDeliSizeW: 80.0
+*DeliSizeW 80.0/物理宽度 mm: ""
+*CloseUI: *DeliSizeW
+*OpenUI *DeliSizeH/DeliSizeH: PickOne
+*OrderDependency: 30 AnySetup *DeliSizeH
+*DefaultDeliSizeH: 100
+*DeliSizeH 100/物理高度 mm: ""
+*CloseUI: *DeliSizeH
+*OpenUI *DeliGap/DeliGap: PickOne
+*OrderDependency: 30 AnySetup *DeliGap
+*DefaultDeliGap: 0.0
+*DeliGap 0.0/标签间隙 mm: ""
+*CloseUI: *DeliGap
+*OpenUI *DeliDensity/DeliDensity: PickOne
+*OrderDependency: 30 AnySetup *DeliDensity
+*DefaultDeliDensity: 8
+*DeliDensity 8/浓度 0-15: ""
+*CloseUI: *DeliDensity
+*OpenUI *DeliSpeed/DeliSpeed: PickOne
+*OrderDependency: 30 AnySetup *DeliSpeed
+*DefaultDeliSpeed: 4
+*DeliSpeed 4/速度: ""
+*CloseUI: *DeliSpeed
+*OpenUI *DeliDirection/DeliDirection: PickOne
+*OrderDependency: 30 AnySetup *DeliDirection
+*DefaultDeliDirection: 0
+*DeliDirection 0/走纸方向: ""
+*CloseUI: *DeliDirection
+*OpenUI *DeliRotate180/DeliRotate180: PickOne
+*OrderDependency: 30 AnySetup *DeliRotate180
+*DefaultDeliRotate180: 0
+*DeliRotate180 0/旋转 180 度: ""
+*CloseUI: *DeliRotate180
+*OpenUI *DeliInvert/DeliInvert: PickOne
+*OrderDependency: 30 AnySetup *DeliInvert
+*DefaultDeliInvert: 0
+*DeliInvert 0/位图极性: ""
+*CloseUI: *DeliInvert
+*OpenUI *DeliTearOff/DeliTearOff: PickOne
+*OrderDependency: 30 AnySetup *DeliTearOff
+*DefaultDeliTearOff: 1
+*DeliTearOff 1/走纸到撕纸位: ""
+*CloseUI: *DeliTearOff
+*OpenUI *DeliOffsetY/DeliOffsetY: PickOne
+*OrderDependency: 30 AnySetup *DeliOffsetY
+*DefaultDeliOffsetY: 0
+*DeliOffsetY 0/纵向微调 dot: ""
+*CloseUI: *DeliOffsetY
+
+*OpenUI *PBPdl/指令集: PickOne
+*OrderDependency: 30 AnySetup *PBPdl
+*DefaultPBPdl: escpos
+*PBPdl tspl/tspl: ""
+*PBPdl zpl/zpl: ""
+*PBPdl escpos/escpos: ""
+*PBPdl passthrough/passthrough: ""
+*CloseUI: *PBPdl
+
+*OpenUI *PBMediaType/介质类型: PickOne
+*OrderDependency: 30 AnySetup *PBMediaType
+*DefaultPBMediaType: continuous
+*PBMediaType gap/gap: ""
+*PBMediaType blackmark/blackmark: ""
+*PBMediaType continuous/continuous: ""
+*CloseUI: *PBMediaType
+
+*DefaultFont: Courier
+*Font Courier: Standard "(001.001)" Standard ROM
+
+*% 纸型总数：9

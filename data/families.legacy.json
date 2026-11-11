@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "version": "0.4.1",
+  "generated_at": "2026-11-10T20:07:31+08:00",
+  "principle": "按指令集族收敛，非逐台真机验证：把机型按 TSPL / ZPL / ESC-POS / 系统原生驱动等指令集族归入有限几类，每类给出参数化保守默认档案；未知机型按匹配线索自动收敛到对应族，绝不逐台声称已验证。",
+  "families": {
+    "tspl_label": {
+      "pdl": "tspl",
+      "description": "TSPL 热敏/热转印标签机族：电商面单、条码标签、间隙或黑标定位的卷筒介质。",
+      "defaults": {
+        "dpi": 300,
+        "max_width_mm": 100,
+        "media_type": "gap",
+        "density": 8,
+        "gap_mm": 2.0,
+        "invert": true,
+        "rotate180": true,
+        "direction": 1,
+        "tear_off": true,
+        "cut": false
+      },
+      "notes": "本族默认值取自本机 TSPL 真机的主机侧实测配置（device-settings.json 既有 active 项），是全库唯一带 measured 证据的档案；其余品牌机型归入本族时一律降级为公开规范默认、需校准。参数含义与调参：dpi 为打印分辨率，换更高 dpi 机型时同步调整点位换算；max_width_mm 当前取 100mm，仅对齐本机已验证的 100×100 面单纸型宽度作为保守上限，并非设备物理极限；换用更宽标签时应通过 profile set --max-width 显式放宽（超出只告警、不静默缩放）；media_type 取 gap/blackmark/continuous，卷筒有间隙用 gap、黑标用 blackmark、连续纸用 continuous；density 为 TSPL 打印浓度（常见取值域 0–15，越大越浓，需按碳带/热敏纸试打微调）；gap_mm 为标签间隙高度，按实际耗材重设；invert 为位图极性、rotate180 为画面旋转 180°、direction 为走纸方向，三者属走纸相关，必须经一次实物出纸确认；tear_off=true 表示走纸到撕纸位、cut=false 表示无自动切刀（带切刀机型把 cut 置 true、tear_off 置 false）。",
+      "evidence": "measured"
+    },
+    "zpl_label": {
+      "pdl": "zpl",
+      "description": "ZPL / ZPL II 标签机族：工业条码标签、面单，常见 4 英寸卷筒介质。",
+      "defaults": {
+        "dpi": 203,
+        "max_width_mm": 104,
+        "media_type": "gap",
+        "density": 8,
+        "gap_mm": 2.0,
+        "invert": false,
+        "rotate180": false,
+        "direction": 0,
+        "tear_off": true,
+        "cut": false
+      },
+      "notes": "参数来自 ZPL II 公开指令集规范的通用约定，未经本机真机出纸验证，属族保守默认值。参数含义与调参：dpi 常见 203（8 dpmm）/300（12 dpmm），换 600dpi 机型须重算点位；max_width_mm=104 为 4 英寸族的保守上限、非任何具体型号实测值，实际以 ^PW 纸张宽度指令与耗材为准；media_type 对应 ^MN 介质探测（gap 间隙 / blackmark 黑标 / continuous 连续）；density 对应 ^MD 浓度，按碳带与介质试打调整；gap_mm 对应间隙高度；invert/rotate180/direction 为走纸与画面极性，不同厂商默认不同，必须一次实物校准；tear_off/cut 对应 ^MM 撕纸/切刀模式。",
+      "evidence": "public-spec"
+    },
+    "escpos_receipt": {
+      "pdl": "escpos",
+      "description": "ESC/POS 热敏小票机族：58mm / 80mm 收据、连续纸卷，多带自动切刀。",
+      "defaults": {
+        "dpi": 203,
+        "max_width_mm": 80,
+        "media_type": "continuous",
+        "density": 8,
+        "gap_mm": 0.0,
+        "invert": false,
+        "rotate180": false,
+        "direction": 0,
+        "tear_off": true,
+        "cut": true
+      },
+      "notes": "参数来自 ESC/POS 公开指令集规范的通用约定，未经本机真机出纸验证，属族保守默认值。参数含义与调参：dpi 以 203（8 点/mm）为常见默认；max_width_mm=80 为 80mm 纸卷的保守上限，58mm 机型须下调；media_type=continuous 表明小票为连续纸、无间隙/黑标探测；gap_mm=0 即无间隙；density 为打印浓度（ESC/POS 常用 DIP 或 GS 指令调节），按纸张试打微调；invert/rotate180/direction 为走纸与画面极性，须一次实物校准；cut=true 为常见的自动切刀、tear_off=true 为撕纸位兜底，不带切刀的机型应把 cut 置 false。",
+      "evidence": "public-spec"
+    },
+    "escpos_label": {
+      "pdl": "escpos",
+      "description": "ESC/POS 标签变体族：便携/桌面标签机，带间隙或黑标探测的窄幅卷筒介质。",
+      "defaults": {
+        "dpi": 203,
+        "max_width_mm": 80,
+        "media_type": "gap",
+        "density": 8,
+        "gap_mm": 2.0,
+        "invert": false,
+        "rotate180": false,
+        "direction": 0,
+        "tear_off": true,
+        "cut": false
+      },
+      "notes": "与 escpos_receipt 的区别在于介质带间隙/黑标定位（media_type=gap、gap_mm>0），其余参数沿用 ESC/POS 公开规范的保守默认，未经本机真机验证。参数含义与调参：dpi 常见 203；max_width_mm 为窄幅保守上限，按实际标签宽度重设；media_type 在 gap/blackmark 间按耗材选择；density 为浓度，按试打微调；gap_mm 按标签间隙重设；invert/rotate180/direction 为走纸与画面极性，须一次实物校准；tear_off/cut 按是否有切刀设置。",
+      "evidence": "public-spec"
+    },
+    "sheet_native": {
+      "pdl": "native",
+      "description": "系统原生驱动族：A4 / A3 普通纸激光、喷墨、一体机，走 macOS AirPrint / IPP Everywhere / PCL / PDF 原生通道。",
+      "defaults": {
+        "dpi": 300,
+        "max_width_mm": 210,
+        "media_type": "continuous",
+        "density": 0,
+        "gap_mm": 0.0,
+        "invert": false,
+        "rotate180": false,
+        "direction": 0,
+        "tear_off": false,
+        "cut": false
+      },
+      "notes": "本族走系统原生驱动，纸飞机只做统一入口与审计，不接管标签级走纸参数。参数含义与调参：dpi=300 与 max_width_mm=210 为 A4 标准纸型的公开参考值、非任何具体机型实测，实际分辨率与纸张由 PPD / 系统驱动决定；media_type=continuous 表示单张普通纸无间隙探测；density、gap_mm、invert、rotate180、direction、tear_off、cut 对普通纸机无物理意义，仅为与标签族字段集对齐而保留的保守占位（取 0 / false）；切勿把这些占位值下发给标签机。",
+      "evidence": "native-os"
+    }
+  },
+  "match_rules": [
+    {
+      "priority": 10,
+      "when": { "pdl_hint": "tspl" },
+      "family": "tspl_label"
+    },
+    {
+      "priority": 11,
+      "when": { "pdl_hint": "zpl" },
+      "family": "zpl_label"
+    },
+    {
+      "priority": 12,
+      "when": { "pdl_hint": "escpos" },
+      "family": "escpos_receipt"
+    },
+    {
+      "priority": 13,
+      "when": { "pdl_hint": "escpos-label" },
+      "family": "escpos_label"
+    },
+    {
+      "priority": 14,
+      "when": { "pdl_hint": "native" },
+      "family": "sheet_native"
+    },
+    {
+      "priority": 20,
+      "when": { "cupsFilter_contains": ["rastertotspl", "totspl", "tspl"] },
+      "family": "tspl_label"
+    },
+    {
+      "priority": 21,
+      "when": { "cupsFilter_contains": ["tozpl", "zpl"] },
+      "family": "zpl_label"
+    },
+    {
+      "priority": 22,
+      "when": { "cupsFilter_contains": ["toescpos", "rastertoescpos", "escpos"] },
+      "family": "escpos_receipt"
+    },
+    {
+      "priority": 30,
+      "when": { "model_contains": ["80mm", "58mm", "小票", "receipt", "POS-80", "POS-58", "TM-T", "TM-L", "GP-58", "GP-80", "XP-58", "XP-80", "XP-90", "L90", "热敏票据", "收据"] },
+      "family": "escpos_receipt"
+    },
+    {
+      "priority": 31,
+      "when": { "model_contains": ["QL-", "P-touch", "PT-", "TD-", "label printer", "标签打印机"] },
+      "family": "escpos_label"
+    },
+    {
+      "priority": 40,
+      "when": { "model_contains": ["Deli", "得力", "DL-888", "888D", "DL-720", "HPRT", "汉印", "N41", "Gainscha", "佳博", "Xprinter", "芯烨", "TSC", "TTP", "TE244", "TX600", "GP-3120", "GP-1324"] },
+      "family": "tspl_label"
+    },
+    {
+      "priority": 41,
+      "when": { "make_contains": ["Zebra", "斑马", "Honeywell", "霍尼韦尔", "ZPL", "ZD4", "ZT4", "GK888", "ZD421", "ZT411"] },
+      "family": "zpl_label"
+    },
+    {
+      "priority": 50,
+      "when": { "ppd_contains": ["rastertotspl", "TSPL", "DeliLabel"] },
+      "family": "tspl_label"
+    },
+    {
+      "priority": 51,
+      "when": { "ppd_contains": ["ZPL", "Zebra"] },
+      "family": "zpl_label"
+    },
+    {
+      "priority": 52,
+      "when": { "ppd_contains": ["ESC/POS", "escpos", "Receipt", "收据"] },
+      "family": "escpos_receipt"
+    },
+    {
+      "priority": 60,
+      "when": { "model_contains": ["Brother", "EPSON", "Epson", "Canon", "HP", "Hewlett", "Fuji", "FUJIFILM", "Xerox", "Kyocera", "Ricoh", "Lexmark", "Sharp", "Pantum", "奔图", "Lenovo", "至像", "Deli", "得力", "Apeos", "bizhub", "i-SENSYS", "LaserJet", "OfficeJet", "PIXMA", "imageRUNNER", "EcoTank", "WorkForce", "L3110", "L3250", "HL-L", "MFC", "DCP"] },
+      "family": "sheet_native"
+    },
+    {
+      "priority": 61,
+      "when": { "model_contains": ["A4", "A3", "激光", "喷墨", "一体机", "复印机", "Laser", "Inkjet", "MFP", "打印机", "办公"] },
+      "family": "sheet_native"
+    },
+    {
+      "priority": 90,
+      "when": { "media_max_edge_mm_lte": 100 },
+      "family": "escpos_receipt"
+    }
+  ],
+  "evidence_policy": {
+    "note": "解析结果按三级证据等级标注（measured / public-spec / unknown）；族级来源 families.evidence 另含 native-os（系统原生驱动），其结果等级并入 public-spec（未经真机）。品牌名一律只是 match_rules 中的匹配线索，绝不写成「已验证该机型支持」。",
+    "levels": {
+      "measured": "本机实测：仅指本机两台真机的实跑/实测配置。本库中只有 Deli DL-888D PRO 命中 tspl_label 族时为 measured（该族默认值直接引用其主机侧实测配置）；换纸型后仍建议复核。",
+      "public-spec": "公开指令集规范（未经真机）：参数来自 TSPL / ZPL / ESC-POS 等公开规范的族保守默认值，或系统原生驱动（native-os）参考值，未对该品牌/型号做过任何实物出纸验证；命中即 needs_calibration=true，需用户报型号并做一次实物校准。",
+      "unknown": "自动收敛（需一次校准）：匹配线索不足，回落到 sheet_native 或按最大边长 >200mm 判定为普通纸机，采用族保守默认值；绝不猜测品牌硬编码参数，needs_calibration=true。"
+    },
+    "rules": [
+      "未知机型必须走族保守默认值，不得凭品牌名硬编码具体硬件参数，不得把匹配线索写成「已验证该机型支持」。",
+      "除本机 Deli DL-888D PRO 外，任何品牌/型号的参数都不得标注为 measured。",
+      "品牌名与型号名仅作为 match_rules 的匹配线索，用于把机型收敛到指令集族，不代表逐台真机验证。",
+      "evidence=public-spec 与 evidence=unknown 时，resolve 必须置 needs_calibration=true；只有本机实测机型为 false。",
+      "严禁编造具体机型的精确硬件参数（如某型号幅宽 108.0mm、dpi 300）当作实测值；族默认值一律标注为公开规范/保守默认并需校准。"
+    ]
+  },
+  "unverified_notice": "本机仅 2 台真机（Deli DL-888D PRO 热敏标签机 / TSPL、EPSON L3110 A4 喷墨），其余机型的参数均为按指令集族收敛的保守默认值，并非逐台真机验证。离线环境无法验证走纸方向、打印浓度、走纸极性（invert / rotate180）、间隙/黑标探测、撕纸位与切刀等实物行为；用户目前明确禁止任何实体出纸，因此本模块不提交任何打印作业、也不声称已完成实物校准。需用户报上具体型号后，安排一次实物校准方可确认参数。"
+}

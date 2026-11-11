@@ -1,0 +1,12 @@
+#!/bin/bash
+# 双击这个文件即可安装。它会自己弹出密码框，不用开终端、不用敲命令。
+cd "$(dirname "$0")" || exit 1
+clear
+echo "纸飞机 PaperPlane · 一键安装"
+echo "接下来会请求一次管理员密码，用于把驱动装进系统目录。"
+echo "这不会打印任何纸张。"
+echo
+bash "./install.sh"
+echo
+echo "按回车关闭窗口。"
+read -r _

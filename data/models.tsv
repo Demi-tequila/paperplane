@@ -1,0 +1,122 @@
+# 纸飞机 PaperPlane 机型库（唯一事实来源）
+#
+# 强制规则：不允许猜。
+#   1. 首选设备自报：USB device-id 的 CMD 字段 / 网络 IPP 的 printer-device-id。
+#      设备自己说什么指令集，就按什么打。
+#   2. 设备不报（大量廉价国产机 CMD 为空）才查本表；必须命中有出处的行。
+#   3. 本表没命中 → 停止自动绑定，报「未知机型」让用户决定，
+#      绝不静默默认成 TSPL。
+#
+# 正则注意：多品牌写法必须加括号 —— `(芯烨|xprinter).*58` 而不是 `芯烨|xprinter.*58`，
+# 后者等于「品牌名裸匹配」，会把同品牌的小票机误判成标签机（0.5.0 实测抓到过）。
+#
+# 字段（TAB 分隔，9 列，顺序即优先级）：
+#   1 family    指令集族 tspl_label | system_native_label | escpos_receipt | escpos_label | sheet_native | unsupported
+#              system_native_label = macOS 自带 ZPL/EPL/CPCL 驱动（rastertolabel），
+#              纸飞机不重复造这个轮子，直接让用户用系统驱动
+#   2 regex     对「厂商 型号」小写串做 ERE 匹配
+#   3 dpi       原生点密度（1:1 物理尺寸的唯一依据）
+#   4 max_width 最大打印宽度 mm
+#   5 cut       1=带自动切刀
+#   6 evidence  measured（本机真机实测）| vendor-spec（厂商规格书明示）
+#   7 source    出处
+#   8 note      给用户看的中文说明
+#   9 sample    测试台用的具体型号串（必须能被本行 regex 命中）
+
+# ── TSPL 标签机族 ────────────────────────────────────────────────────────
+tspl_label	(得力|deli).*(dl-?888)	300	100	0	measured	本机实测 DL-888D PRO：300dpi/100mm/无切刀，连续出纸验证（2026-11）	得力 DL-888D PRO（本机唯一真机实测机型）	Deli DL-888D PRO
+tspl_label	(得力|deli).*(dl-?770)	203	104	0	vendor-spec	得力 DL-770D 规格书：203dpi、4 英寸、TSPL	得力 DL-770D/770E 系列	Deli DL-770D
+tspl_label	(得力|deli).*(dl-?730)	203	104	0	vendor-spec	得力 DL-730C 规格书：203dpi、TSPL	得力 DL-730C	Deli DL-730C
+tspl_label	(得力|deli).*(dl-?886)	203	104	0	vendor-spec	得力 DL-886A/B 规格书：203dpi、TSPL	得力 DL-886 系列	Deli DL-886A
+tspl_label	(得力|deli).*(dl-?820)	203	108	0	vendor-spec	得力 DL-820T 规格书：203dpi、TSPL	得力 DL-820T	Deli DL-820T
+tspl_label	(汉印|hprt).*(n41|n31|d45|sl42|cp4000|ht300|ht330)	203	108	0	vendor-spec	汉印 N41/D45/SL42 规格书：203dpi、TSPL/TSPL2	汉印 N41/N31/D45/SL42/CP4000	HPRT SL42
+tspl_label	(汉印|hprt).*(mt800|mt8000|a300|a330)	203	108	0	vendor-spec	汉印便携系列规格书：203dpi、TSPL	汉印便携 MT800/A300 系列	HPRT MT800
+tspl_label	(佳博|gprinter).*(gp-?1324|gp-?1924|gp-?1524|gp-?1204)	203	108	0	vendor-spec	佳博 GP-1324D/1924D 规格书：203dpi、TSPL	佳博 GP-1324D/1924D/1524T	Gprinter GP-1324D
+tspl_label	(佳博|gprinter).*(gp-?3120|gp-?3124)	203	108	0	vendor-spec	佳博 GP-3120TU 规格书：203dpi、TSPL	佳博 GP-3120TU/1324D	Gprinter GP-3120TU
+tspl_label	(芯烨|xprinter).*(365|370|460|470|420|350)	203	108	0	vendor-spec	芯烨 XP-365B/370B 规格书：203dpi、TSPL	芯烨 XP-365B/370B/460B/470B	Xprinter XP-365B
+tspl_label	(芯烨|xprinter).*(tt426|tt437)	203	108	0	vendor-spec	芯烨 TT426B 规格书：203dpi、TSPL	芯烨 XP-TT426B/TT437B	Xprinter XP-TT426B
+tspl_label	(启锐|qirui).*(386|488|668|586)	203	104	0	vendor-spec	启锐 QR-386A/488 规格书：203dpi、TSPL	启锐 QR-386A/488/668	Qirui QR-386A
+tspl_label	(快麦|kuaimai).*(118|202|241|300)	203	104	0	vendor-spec	快麦 KM-118/202 规格书：203dpi、TSPL	快麦 KM-118/202/241	Kuaimai KM-118
+tspl_label	(立象|argox).*(os-?214|cp-?2140|ox-?2)	203	104	0	vendor-spec	立象 OS-214plus 规格书：203dpi、PPLA/PPLB/TSPL 兼容	立象 OS-214plus/CP-2140	Argox OS-214plus
+tspl_label	(博思得|postek).*(c168|g-?2108|q8|ez)	203	108	0	vendor-spec	博思得 C168/G-2108 规格书：203dpi、PPLB/TSPL	博思得 C168/G-2108/Q8	Postek C168
+tspl_label	tsc.*(ttp-?244|te200|te210|ttp-?342|da210|da310)	203	108	0	vendor-spec	TSC TTP-244 Pro/TE200 手册：TSPL-EZ 原生	TSC 台产的 TTP/TE/DA 系列（TSPL-EZ 原生）	TSC TTP-244 Pro
+tspl_label	(北洋|btp).*(2100|2300|l42)	203	104	0	vendor-spec	北洋 BTP-2100E 手册：TSPL 兼容	北洋 BTP-2100E/2300E	BTP-2100E
+tspl_label	(资江|zijiang).*(zj-?9)	203	104	0	vendor-spec	资江 ZJ-9200 手册：TSPL 兼容	资江 ZJ-9200/9210	Zijiang ZJ-9200
+tspl_label	(中崎|zonerich).*(ab-?320|ab-?340)	203	104	0	vendor-spec	中崎 AB-320M 手册：TSPL 兼容	中崎 AB-320M/340M	Zonerich AB-320M
+tspl_label	(汉印|hprt).*(tp585|tp805)	203	80	1	vendor-spec	汉印 TP585/TP805 手册：TSPL 标签模式	汉印 TP585 标签模式	HPRT TP585
+
+# ── ZPL 标签机族 ─────────────────────────────────────────────────────────
+system_native_label	zebra.*(zd|zt|gk|gx|zm|zp|105|110|140|220|2824|2844)	203	104	0	vendor-spec	Zebra ZPL II 指令集手册；ZD/ZT 系列原生 ZPL	Zebra ZD230/ZD421/ZT411/GK420d 等	Zebra ZD421
+system_native_label	zebra.*(zd621|zd611|zt610|zt510)	300	104	0	vendor-spec	Zebra ZD621/ZT610 规格书：300dpi 版本、ZPL II	Zebra 300dpi 机型	Zebra ZD621
+system_native_label	(honeywell|霍尼韦尔).*(pc42|pd43|pm42|px4|pd45|pc23)	203	104	0	vendor-spec	Honeywell PC42d/PD43 用户手册：ZPL/EPL/DPL	Honeywell PC42d/PD43/PM42	Honeywell PC42d
+system_native_label	sato.*(cl4|cl6|ct4|ws4|s84)	203	104	0	vendor-spec	SATO CL4NX 编程手册：SZPL/SBPL/SIPL，默认按 ZPL 输出	SATO CL4NX/CT408i	SATO CL4NX
+system_native_label	godex.*(g500|g530|rt200|ez2|dt2)	203	104	0	vendor-spec	Godex EZPL 手册：兼容 ZPL 指令集	Godex G500/G530/RT200	Godex G500
+system_native_label	citizen.*(cl-?s|cl-?e)	203	104	0	vendor-spec	Citizen CL-S700 手册：ZPL/Datamax 兼容	Citizen CL-S700/CL-E720	Citizen CL-S700
+system_native_label	(东集|seuic).*auto	203	104	0	vendor-spec	东集 AUTOID 系列手册：ZPL 兼容	东集 AUTOID Q9 打印模块	SEUIC AUTOID Q9
+
+# ── ESC/POS 小票机族 ─────────────────────────────────────────────────────
+escpos_receipt	(爱普生|epson).*tm-?[tm0-9]	203	80	1	vendor-spec	Epson TM 系列技术参考：ESC/POS、203dpi、自动切刀	Epson TM-T82III/TM-T100/TM-m30	EPSON TM-T82III
+escpos_receipt	star.*(tsp|mcp|sm-?[ls])	203	80	1	vendor-spec	Star TSP800II 手册：StarPRNT/ESC-POS 双模式	Star TSP100/TSP800II	Star TSP800II
+escpos_receipt	(芯烨|xprinter).*(58|80|n160|p58|p80)	203	80	1	vendor-spec	芯烨 XP-58IIH/XP-80C 手册：ESC/POS、58/80mm	芯烨 XP-58IIH/XP-80C/N160II	Xprinter XP-58IIH
+escpos_receipt	(佳博|gprinter).*(58|80|u80)	203	80	1	vendor-spec	佳博 GP-58MBIII/U80300I 手册：ESC/POS	佳博 GP-58MBIII/U80300I	Gprinter GP-58MBIII
+escpos_receipt	(中崎|zonerich).*(ab-?58|ab-?80)	203	80	1	vendor-spec	中崎 AB-58MK 手册：ESC/POS	中崎 AB-58MK/AB-80MK	Zonerich AB-58MK
+escpos_receipt	(商米|sunmi)	203	80	1	vendor-spec	商米 TP585 规格书：ESC/POS、80mm	商米内置打印	Sunmi TP585
+escpos_receipt	(得力|deli).*(801|802|803)p	203	80	1	vendor-spec	得力 DL-801P 手册：ESC/POS 小票	得力 DL-801P/802P	Deli DL-801P
+escpos_receipt	(映美|jolimark).*(58|80)	203	80	1	vendor-spec	映美 RP 系列手册：ESC/POS	映美 58/80mm 小票机	Jolimark RP80
+
+# ── ESC/POS 标签族（少数便携机型） ───────────────────────────────────────
+# 说明：ESC/POS 标签族目前没有「有出处、且不与 TSPL 族冲突」的机型，
+# 因此不写任何自动匹配规则。族保留给 --bind-family 手动指定，避免猜。
+
+# ── 系统原生族（普通纸机，纸飞机不接管） ───────────────────────────────────
+sheet_native	(hp|惠普).*(laserjet|officejet|deskjet|designjet|envy|smart tank)	300	216	0	vendor-spec	HP PCL/PCLXL/PostScript 设备；macOS 自带驱动	HP 激光/喷墨全系	HP LaserJet M404dn
+sheet_native	(爱普生|epson).*(l[0-9]{3}|xp-|wf-|et-|workforce|stylus)	300	216	0	vendor-spec	Epson L3110 等由系统驱动出纸（本机实测可用）	Epson L 系列/XP/WF	EPSON L3110 Series
+sheet_native	(canon|佳能).*(lbp|mf|ts[0-9]|mg|g[0-9]{4}|imageclass|pixma)	300	216	0	vendor-spec	Canon UFR II/CAPT/PS 设备；macOS 自带驱动	Canon 激光/喷墨全系	Canon LBP2900
+sheet_native	(brother|兄弟).*(hl|dcp|mfc)	300	216	0	vendor-spec	Brother PCL/PJL 设备；macOS 自带驱动	Brother HL/DCP/MFC	Brother HL-L2350DW
+sheet_native	(ricoh|kyocera|sharp|toshiba|konica|minolta|lexmark|富士施乐|xerox)	300	216	0	vendor-spec	企业级 PCL/PS 复合机；macOS 自带 PostScript 驱动	企业复合机	RICOH IM C3000
+sheet_native	(小米|xiaomi|mi).*(print|打印)	300	216	0	vendor-spec	小米米家喷墨打印机；系统 AirPrint	小米喷墨打印机	Xiaomi Mi Printer
+
+# ── 明确不支持（私有协议，无法生成设备能读懂的指令） ─────────────────────
+unsupported	(niimbot|精臣)	0	0	0	vendor-spec	精臣公开资料：BLE 私有二进制协议，无公开指令集	精臣标签机：需厂商 App，纸飞机不支持	Niimbot B21
+unsupported	(喵喵机|maimang|paperang)	0	0	0	vendor-spec	喵喵机公开资料：BLE 私有协议	喵喵机：需厂商 App，纸飞机不支持	Paperang P2
+unsupported	phomemo.*(m0[0-9]|t0[0-9])	0	0	0	vendor-spec	Phomemo 便携机私有协议	Phomemo 便携机：默认不支持	Phomemo M02
+unsupported	brother.*ql-?[0-9]	0	0	0	vendor-spec	Brother QL 使用专有 Raster Command Reference	Brother QL 标签机：需专有驱动，纸飞机不支持	Brother QL-800
+unsupported	(dymo).*(labelwriter)	0	0	0	vendor-spec	DYMO LabelWriter 专有协议	DYMO 标签机：需专有驱动，纸飞机不支持	DYMO LabelWriter 450
+
+# ── 日本品牌（理光重点，其余一并列全） ───────────────────────────────────
+# 理光全系：IM C（彩色复合机）、IM（黑白）、MP（多功能）、SP（激光）、P（页式打印）、
+# SG/GX（GelSprinter 喷墨）、Aficio（旧款）、NX（生产型）。全部 PCL/PS 设备，
+# macOS 自带驱动或理光官方 macOS 驱动覆盖，纸飞机只识别、不接管。
+sheet_native	(理光|ricoh).*(im c|im [0-9]|mp c|mp [0-9]|sp [0-9]|aficio)	600	216	0	vendor-spec	理光设备规格页：IM/MP/SP/Aficio 系列为 PCL XL / PostScript 3 设备	理光 IM C / MP / SP / Aficio 系列复合机与激光机	Ricoh IM C3000
+sheet_native	(理光|ricoh).*(p [0-9]{3}|sg [0-9]|gx |nx |ap )	600	216	0	vendor-spec	理光 P/SG/GX 系列规格页：PCL/PS 或 GelSprinter 驱动	理光 P / SG / GX / NX / AP 系列	Ricoh P 502
+sheet_native	(理光|ricoh).*(gr |ip |aficio)	600	216	0	vendor-spec	理光旧型号规格页：PCL/PS	理光 GR / IP / 旧 Aficio	Ricoh Aficio MP 4001
+# 佳能日本系：imageRUNNER(iR)、i-SENSYS、PIXUS（日本国内喷墨）、SELPHY 热升华除外
+sheet_native	(canon|佳能|キヤノン).*(imagerunner|ir-|i-sensys|pixus|lbp|mf[0-9]|ts[0-9]|mg[0-9]|g[0-9]{4})	600	216	0	vendor-spec	佳能设备规格页：UFR II / PCL / PS	佳能 imageRUNNER / i-SENSYS / PIXUS 等	Canon iR-ADV C5560
+# 爱普生日本系：PX（国内照片喷墨）、LP（激光）、EW/WF；LW 标签机走私有协议
+sheet_native	(epson|爱普生).*(px-|lp-|ew-|wf-|l[0-9]{3}|xp-|et-)	600	216	0	vendor-spec	爱普生规格页：AirPrint / 官方 macOS 驱动	爱普生 PX / LP / EW / WF / L 系列	EPSON PX-049A
+unsupported	(epson|爱普生).*(lw-|labelworks)	0	0	0	vendor-spec	爱普生 LabelWorks 手册：ESC/P 标签私有协议	爱普生 LW 标签机：需官方 Label Editor，纸飞机不支持	EPSON LW-900
+# 兄弟日本系：HL/DCP/MFC/PJ；PT/QL 标签机走 Brother 专有光栅协议
+sheet_native	(brother|兄弟|ブラザー).*(hl|dcp|mfc|pj)	600	216	0	vendor-spec	Brother 规格页：PCL / 官方 macOS 驱动	Brother HL / DCP / MFC / PJ 系列	Brother MFC-J6983CDW
+unsupported	(brother|兄弟).*(pt-|ql-|pj-?[mM])	0	0	0	vendor-spec	Brother P-touch/QL 手册：专有 Raster Command Reference	Brother PT / QL 标签机：需专有驱动，纸飞机不支持	Brother PT-P910BT
+# 京瓷
+sheet_native	(kyocera|京瓷|kyocera mita).*(ecosys|taskalfa|fs-|cs |dp )	600	216	0	vendor-spec	京瓷规格页：PCL XL / KPDL(PostScript)	京瓷 ECOSYS / TASKalfa / FS 系列	KYOCERA ECOSYS M3655idn
+# 夏普（用户局域网里的 MX-3118NC 即此系列）
+sheet_native	(sharp|夏普).*(mx|bp |ar |ux )	600	216	0	vendor-spec	夏普规格页：PCL6 / PostScript3	夏普 MX / BP / AR 系列复合机	SHARP MX-3118NC
+# 东芝泰格：e-STUDIO 复合机；B-SX/B-EV 标签机为 TEC 私有协议，不写规则（遇型号如实报未知）
+sheet_native	(toshiba|东芝).*(e-studio|estudio)	600	216	0	vendor-spec	东芝规格页：PCL / PostScript3	东芝 e-STUDIO 系列	Toshiba e-STUDIO5508A
+# 富士胶片商业创新（原富士施乐）
+sheet_native	(fujifilm|富士胶片|fuji xerox|富士施乐).*(apeos|docuprint|docucentre|docuwide|pele)	600	216	0	vendor-spec	富士胶片规格页：PCL / PostScript3	富士胶片 Apeos / DocuPrint 系列	FUJIFILM Apeos C5570
+# 柯尼卡美能达
+sheet_native	(konica minolta|柯尼卡美能达|konica).*(bizhub|magicolor|pagepro|dl |accuio)	600	216	0	vendor-spec	柯尼卡美能达规格页：PCL / PS	柯尼卡美能达 bizhub / magicolor 系列	KONICA MINOLTA bizhub C368
+# OKI（冲电气）
+sheet_native	(oki|okidata|冲信息).*(mc |es |c[0-9]{3}|b[0-9]{3}|pro[0-9])	600	216	0	vendor-spec	OKI 规格页：PCL / PostScript	OKI MC / ES / C / B 系列	OKI MC363dn
+# NEC
+sheet_native	(nec).*(multiwriter|picty|valueone)	600	216	0	vendor-spec	NEC 规格页：PCL / PS	NEC MultiWriter / Picty 系列	NEC MultiWriter 5700C
+# 松下（Panasonic 打印机多为理光 OEM）
+sheet_native	(panasonic|松下|パナソニック).*(kx-|dp-|mb |workio)	600	216	0	vendor-spec	松下规格页：PCL / PS	松下 KX / DP / Workio 系列	Panasonic KX-MB2061
+# 卡西欧标签机
+unsupported	(casio|卡西欧).*(kl-|dt-|cw-)	0	0	0	vendor-spec	卡西欧手册：私有标签协议	卡西欧 KL / DT 标签机：需专有工具，纸飞机不支持	CASIO KL-8800
+# 三菱电机照片打印机
+unsupported	(mitsubishi|三菱).*(cp-|k60|d70|d80)	0	0	0	vendor-spec	三菱照片打印机手册：私有热升华协议	三菱 CP 系列照片打印机：需专有驱动，纸飞机不支持	Mitsubishi CP-D70DW
+# Star（日本，小票机，ESC/POS 已在上方）；SATO / Citizen（日本，标签机）已在 ZPL 让路段
+sheet_native	mx[- ]?[0-9]{4}	600	216	0	vendor-spec	夏普 MX 系列命名规则（MX+四位数字）；用于网络发现只报型号、不报厂商的场合	夏普 MX 系列（网络发现只有型号名时）	MX-3118NC

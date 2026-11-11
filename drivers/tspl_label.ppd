@@ -1,0 +1,331 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "0.5.1"
+*PCFileName: "PBTSPL.PPD"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Manufacturer: "PaperPlane"
+*ModelName: "PaperPlane TSPL Label"
+*NickName: "纸飞机 TSPL 标签机（国产主流，300 dpi）"
+*ShortNickName: "PaperPlane TSPL"
+*Product: "(PaperPlane tspl)"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*cupsVersion: 1.4
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/PaperPlane/paperplane"
+*cupsManualCopies: False
+
+*OpenGroup: General/General
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: w283h283
+*PageSize w57h28/标签 20×10: "<</PageSize[56.6929 28.3465]/ImagingBBox null>>setpagedevice"
+*PageSize w71h43/标签 25×15: "<</PageSize[70.8661 42.5197]/ImagingBBox null>>setpagedevice"
+*PageSize w85h28/标签 30×10: "<</PageSize[85.0394 28.3465]/ImagingBBox null>>setpagedevice"
+*PageSize w85h57/标签 30×20: "<</PageSize[85.0394 56.6929]/ImagingBBox null>>setpagedevice"
+*PageSize w91h71/标签 32×25: "<</PageSize[90.7087 70.8661]/ImagingBBox null>>setpagedevice"
+*PageSize w108h71/标签 38×25: "<</PageSize[107.7165 70.8661]/ImagingBBox null>>setpagedevice"
+*PageSize w113h57/标签 40×20: "<</PageSize[113.3858 56.6929]/ImagingBBox null>>setpagedevice"
+*PageSize w113h85/标签 40×30: "<</PageSize[113.3858 85.0394]/ImagingBBox null>>setpagedevice"
+*PageSize w113h170/标签 40×60: "<</PageSize[113.3858 170.0787]/ImagingBBox null>>setpagedevice"
+*PageSize w128h71/标签 45×25: "<</PageSize[127.5591 70.8661]/ImagingBBox null>>setpagedevice"
+*PageSize w142h71/标签 50×25: "<</PageSize[141.7323 70.8661]/ImagingBBox null>>setpagedevice"
+*PageSize w142h85/标签 50×30: "<</PageSize[141.7323 85.0394]/ImagingBBox null>>setpagedevice"
+*PageSize w142h142_2/标签 50×50: "<</PageSize[141.7323 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w142h227/标签 50×80: "<</PageSize[141.7323 226.7717]/ImagingBBox null>>setpagedevice"
+*PageSize w142h283/标签 50×100: "<</PageSize[141.7323 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w162h142/小票 57×50: "<</PageSize[161.5748 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w164h113/标签 58×40: "<</PageSize[164.4094 113.3858]/ImagingBBox null>>setpagedevice"
+*PageSize w164h283/小票 58×100: "<</PageSize[164.4094 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w164h425/小票 58×150: "<</PageSize[164.4094 425.1969]/ImagingBBox null>>setpagedevice"
+*PageSize w164h567/小票 58×200: "<</PageSize[164.4094 566.9291]/ImagingBBox null>>setpagedevice"
+*PageSize w170h85/标签 60×30: "<</PageSize[170.0787 85.0394]/ImagingBBox null>>setpagedevice"
+*PageSize w170h113/标签 60×40: "<</PageSize[170.0787 113.3858]/ImagingBBox null>>setpagedevice"
+*PageSize w170h170/标签 60×60: "<</PageSize[170.0787 170.0787]/ImagingBBox null>>setpagedevice"
+*PageSize w180h108/标签 63.5×38.1: "<</PageSize[180.0000 108.0000]/ImagingBBox null>>setpagedevice"
+*PageSize w198h85/标签 70×30: "<</PageSize[198.4252 85.0394]/ImagingBBox null>>setpagedevice"
+*PageSize w198h142/标签 70×50: "<</PageSize[198.4252 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w215h227/小票 76×80: "<</PageSize[215.4331 226.7717]/ImagingBBox null>>setpagedevice"
+*PageSize w215h283/面单 76×100: "<</PageSize[215.4331 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w215h369/面单 76×130: "<</PageSize[215.4331 368.5039]/ImagingBBox null>>setpagedevice"
+*PageSize w227h142/标签 80×50: "<</PageSize[226.7717 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w227h170/标签 80×60: "<</PageSize[226.7717 170.0787]/ImagingBBox null>>setpagedevice"
+*PageSize w227h283/小票 80×100: "<</PageSize[226.7717 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w227h340/面单 80×120: "<</PageSize[226.7717 340.1575]/ImagingBBox null>>setpagedevice"
+*PageSize w227h425/小票 80×150: "<</PageSize[226.7717 425.1969]/ImagingBBox null>>setpagedevice"
+*PageSize w227h567/小票 80×200: "<</PageSize[226.7717 566.9291]/ImagingBBox null>>setpagedevice"
+*PageSize w227h850/小票 80×300: "<</PageSize[226.7717 850.3937]/ImagingBBox null>>setpagedevice"
+*PageSize w255h170/标签 90×60: "<</PageSize[255.1181 170.0787]/ImagingBBox null>>setpagedevice"
+*PageSize w255h397/面单 90×140: "<</PageSize[255.1181 396.8504]/ImagingBBox null>>setpagedevice"
+*PageSize w283h113/标签 100×40: "<</PageSize[283.4646 113.3858]/ImagingBBox null>>setpagedevice"
+*PageSize w283h142/面单 100×50: "<</PageSize[283.4646 141.7323]/ImagingBBox null>>setpagedevice"
+*PageSize w283h170/面单 100×60: "<</PageSize[283.4646 170.0787]/ImagingBBox null>>setpagedevice"
+*PageSize w283h198/标签 100×70: "<</PageSize[283.4646 198.4252]/ImagingBBox null>>setpagedevice"
+*PageSize w283h227/面单 100×80: "<</PageSize[283.4646 226.7717]/ImagingBBox null>>setpagedevice"
+*PageSize w283h255/标签 100×90: "<</PageSize[283.4646 255.1181]/ImagingBBox null>>setpagedevice"
+*PageSize w283h283/面单 100×100: "<</PageSize[283.4646 283.4646]/ImagingBBox null>>setpagedevice"
+*PageSize w283h340/面单 100×120: "<</PageSize[283.4646 340.1575]/ImagingBBox null>>setpagedevice"
+*PageSize w283h425/面单 100×150: "<</PageSize[283.4646 425.1969]/ImagingBBox null>>setpagedevice"
+*PageSize w283h510/面单 100×180: "<</PageSize[283.4646 510.2362]/ImagingBBox null>>setpagedevice"
+*PageSize w283h567/面单 100×200: "<</PageSize[283.4646 566.9291]/ImagingBBox null>>setpagedevice"
+*PageSize w283h595/面单 100×210: "<</PageSize[283.4646 595.2756]/ImagingBBox null>>setpagedevice"
+*PageSize w283h624/面单 100×220: "<</PageSize[283.4646 623.6220]/ImagingBBox null>>setpagedevice"
+*PageSize w283h652/面单 100×230: "<</PageSize[283.4646 651.9685]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Page Region: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: w283h283
+*PageRegion w57h28/标签 20×10: "<</PageSize[56.6929 28.3465]/ImagingBBox null>>setpagedevice"
+*PageRegion w71h43/标签 25×15: "<</PageSize[70.8661 42.5197]/ImagingBBox null>>setpagedevice"
+*PageRegion w85h28/标签 30×10: "<</PageSize[85.0394 28.3465]/ImagingBBox null>>setpagedevice"
+*PageRegion w85h57/标签 30×20: "<</PageSize[85.0394 56.6929]/ImagingBBox null>>setpagedevice"
+*PageRegion w91h71/标签 32×25: "<</PageSize[90.7087 70.8661]/ImagingBBox null>>setpagedevice"
+*PageRegion w108h71/标签 38×25: "<</PageSize[107.7165 70.8661]/ImagingBBox null>>setpagedevice"
+*PageRegion w113h57/标签 40×20: "<</PageSize[113.3858 56.6929]/ImagingBBox null>>setpagedevice"
+*PageRegion w113h85/标签 40×30: "<</PageSize[113.3858 85.0394]/ImagingBBox null>>setpagedevice"
+*PageRegion w113h170/标签 40×60: "<</PageSize[113.3858 170.0787]/ImagingBBox null>>setpagedevice"
+*PageRegion w128h71/标签 45×25: "<</PageSize[127.5591 70.8661]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h71/标签 50×25: "<</PageSize[141.7323 70.8661]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h85/标签 50×30: "<</PageSize[141.7323 85.0394]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h142_2/标签 50×50: "<</PageSize[141.7323 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h227/标签 50×80: "<</PageSize[141.7323 226.7717]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h283/标签 50×100: "<</PageSize[141.7323 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w162h142/小票 57×50: "<</PageSize[161.5748 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h113/标签 58×40: "<</PageSize[164.4094 113.3858]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h283/小票 58×100: "<</PageSize[164.4094 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h425/小票 58×150: "<</PageSize[164.4094 425.1969]/ImagingBBox null>>setpagedevice"
+*PageRegion w164h567/小票 58×200: "<</PageSize[164.4094 566.9291]/ImagingBBox null>>setpagedevice"
+*PageRegion w170h85/标签 60×30: "<</PageSize[170.0787 85.0394]/ImagingBBox null>>setpagedevice"
+*PageRegion w170h113/标签 60×40: "<</PageSize[170.0787 113.3858]/ImagingBBox null>>setpagedevice"
+*PageRegion w170h170/标签 60×60: "<</PageSize[170.0787 170.0787]/ImagingBBox null>>setpagedevice"
+*PageRegion w180h108/标签 63.5×38.1: "<</PageSize[180.0000 108.0000]/ImagingBBox null>>setpagedevice"
+*PageRegion w198h85/标签 70×30: "<</PageSize[198.4252 85.0394]/ImagingBBox null>>setpagedevice"
+*PageRegion w198h142/标签 70×50: "<</PageSize[198.4252 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w215h227/小票 76×80: "<</PageSize[215.4331 226.7717]/ImagingBBox null>>setpagedevice"
+*PageRegion w215h283/面单 76×100: "<</PageSize[215.4331 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w215h369/面单 76×130: "<</PageSize[215.4331 368.5039]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h142/标签 80×50: "<</PageSize[226.7717 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h170/标签 80×60: "<</PageSize[226.7717 170.0787]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h283/小票 80×100: "<</PageSize[226.7717 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h340/面单 80×120: "<</PageSize[226.7717 340.1575]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h425/小票 80×150: "<</PageSize[226.7717 425.1969]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h567/小票 80×200: "<</PageSize[226.7717 566.9291]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h850/小票 80×300: "<</PageSize[226.7717 850.3937]/ImagingBBox null>>setpagedevice"
+*PageRegion w255h170/标签 90×60: "<</PageSize[255.1181 170.0787]/ImagingBBox null>>setpagedevice"
+*PageRegion w255h397/面单 90×140: "<</PageSize[255.1181 396.8504]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h113/标签 100×40: "<</PageSize[283.4646 113.3858]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h142/面单 100×50: "<</PageSize[283.4646 141.7323]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h170/面单 100×60: "<</PageSize[283.4646 170.0787]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h198/标签 100×70: "<</PageSize[283.4646 198.4252]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h227/面单 100×80: "<</PageSize[283.4646 226.7717]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h255/标签 100×90: "<</PageSize[283.4646 255.1181]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h283/面单 100×100: "<</PageSize[283.4646 283.4646]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h340/面单 100×120: "<</PageSize[283.4646 340.1575]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h425/面单 100×150: "<</PageSize[283.4646 425.1969]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h510/面单 100×180: "<</PageSize[283.4646 510.2362]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h567/面单 100×200: "<</PageSize[283.4646 566.9291]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h595/面单 100×210: "<</PageSize[283.4646 595.2756]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h624/面单 100×220: "<</PageSize[283.4646 623.6220]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h652/面单 100×230: "<</PageSize[283.4646 651.9685]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*PaperDimension w57h28/标签 20×10: "56.6929 28.3465"
+*ImageableArea w57h28/标签 20×10: "0.0000 0.0000 56.6929 28.3465"
+*PaperDimension w71h43/标签 25×15: "70.8661 42.5197"
+*ImageableArea w71h43/标签 25×15: "0.0000 0.0000 70.8661 42.5197"
+*PaperDimension w85h28/标签 30×10: "85.0394 28.3465"
+*ImageableArea w85h28/标签 30×10: "0.0000 0.0000 85.0394 28.3465"
+*PaperDimension w85h57/标签 30×20: "85.0394 56.6929"
+*ImageableArea w85h57/标签 30×20: "0.0000 0.0000 85.0394 56.6929"
+*PaperDimension w91h71/标签 32×25: "90.7087 70.8661"
+*ImageableArea w91h71/标签 32×25: "0.0000 0.0000 90.7087 70.8661"
+*PaperDimension w108h71/标签 38×25: "107.7165 70.8661"
+*ImageableArea w108h71/标签 38×25: "0.0000 0.0000 107.7165 70.8661"
+*PaperDimension w113h57/标签 40×20: "113.3858 56.6929"
+*ImageableArea w113h57/标签 40×20: "0.0000 0.0000 113.3858 56.6929"
+*PaperDimension w113h85/标签 40×30: "113.3858 85.0394"
+*ImageableArea w113h85/标签 40×30: "0.0000 0.0000 113.3858 85.0394"
+*PaperDimension w113h170/标签 40×60: "113.3858 170.0787"
+*ImageableArea w113h170/标签 40×60: "0.0000 0.0000 113.3858 170.0787"
+*PaperDimension w128h71/标签 45×25: "127.5591 70.8661"
+*ImageableArea w128h71/标签 45×25: "0.0000 0.0000 127.5591 70.8661"
+*PaperDimension w142h71/标签 50×25: "141.7323 70.8661"
+*ImageableArea w142h71/标签 50×25: "0.0000 0.0000 141.7323 70.8661"
+*PaperDimension w142h85/标签 50×30: "141.7323 85.0394"
+*ImageableArea w142h85/标签 50×30: "0.0000 0.0000 141.7323 85.0394"
+*PaperDimension w142h142_2/标签 50×50: "141.7323 141.7323"
+*ImageableArea w142h142_2/标签 50×50: "0.0000 0.0000 141.7323 141.7323"
+*PaperDimension w142h227/标签 50×80: "141.7323 226.7717"
+*ImageableArea w142h227/标签 50×80: "0.0000 0.0000 141.7323 226.7717"
+*PaperDimension w142h283/标签 50×100: "141.7323 283.4646"
+*ImageableArea w142h283/标签 50×100: "0.0000 0.0000 141.7323 283.4646"
+*PaperDimension w162h142/小票 57×50: "161.5748 141.7323"
+*ImageableArea w162h142/小票 57×50: "0.0000 0.0000 161.5748 141.7323"
+*PaperDimension w164h113/标签 58×40: "164.4094 113.3858"
+*ImageableArea w164h113/标签 58×40: "0.0000 0.0000 164.4094 113.3858"
+*PaperDimension w164h283/小票 58×100: "164.4094 283.4646"
+*ImageableArea w164h283/小票 58×100: "0.0000 0.0000 164.4094 283.4646"
+*PaperDimension w164h425/小票 58×150: "164.4094 425.1969"
+*ImageableArea w164h425/小票 58×150: "0.0000 0.0000 164.4094 425.1969"
+*PaperDimension w164h567/小票 58×200: "164.4094 566.9291"
+*ImageableArea w164h567/小票 58×200: "0.0000 0.0000 164.4094 566.9291"
+*PaperDimension w170h85/标签 60×30: "170.0787 85.0394"
+*ImageableArea w170h85/标签 60×30: "0.0000 0.0000 170.0787 85.0394"
+*PaperDimension w170h113/标签 60×40: "170.0787 113.3858"
+*ImageableArea w170h113/标签 60×40: "0.0000 0.0000 170.0787 113.3858"
+*PaperDimension w170h170/标签 60×60: "170.0787 170.0787"
+*ImageableArea w170h170/标签 60×60: "0.0000 0.0000 170.0787 170.0787"
+*PaperDimension w180h108/标签 63.5×38.1: "180.0000 108.0000"
+*ImageableArea w180h108/标签 63.5×38.1: "0.0000 0.0000 180.0000 108.0000"
+*PaperDimension w198h85/标签 70×30: "198.4252 85.0394"
+*ImageableArea w198h85/标签 70×30: "0.0000 0.0000 198.4252 85.0394"
+*PaperDimension w198h142/标签 70×50: "198.4252 141.7323"
+*ImageableArea w198h142/标签 70×50: "0.0000 0.0000 198.4252 141.7323"
+*PaperDimension w215h227/小票 76×80: "215.4331 226.7717"
+*ImageableArea w215h227/小票 76×80: "0.0000 0.0000 215.4331 226.7717"
+*PaperDimension w215h283/面单 76×100: "215.4331 283.4646"
+*ImageableArea w215h283/面单 76×100: "0.0000 0.0000 215.4331 283.4646"
+*PaperDimension w215h369/面单 76×130: "215.4331 368.5039"
+*ImageableArea w215h369/面单 76×130: "0.0000 0.0000 215.4331 368.5039"
+*PaperDimension w227h142/标签 80×50: "226.7717 141.7323"
+*ImageableArea w227h142/标签 80×50: "0.0000 0.0000 226.7717 141.7323"
+*PaperDimension w227h170/标签 80×60: "226.7717 170.0787"
+*ImageableArea w227h170/标签 80×60: "0.0000 0.0000 226.7717 170.0787"
+*PaperDimension w227h283/小票 80×100: "226.7717 283.4646"
+*ImageableArea w227h283/小票 80×100: "0.0000 0.0000 226.7717 283.4646"
+*PaperDimension w227h340/面单 80×120: "226.7717 340.1575"
+*ImageableArea w227h340/面单 80×120: "0.0000 0.0000 226.7717 340.1575"
+*PaperDimension w227h425/小票 80×150: "226.7717 425.1969"
+*ImageableArea w227h425/小票 80×150: "0.0000 0.0000 226.7717 425.1969"
+*PaperDimension w227h567/小票 80×200: "226.7717 566.9291"
+*ImageableArea w227h567/小票 80×200: "0.0000 0.0000 226.7717 566.9291"
+*PaperDimension w227h850/小票 80×300: "226.7717 850.3937"
+*ImageableArea w227h850/小票 80×300: "0.0000 0.0000 226.7717 850.3937"
+*PaperDimension w255h170/标签 90×60: "255.1181 170.0787"
+*ImageableArea w255h170/标签 90×60: "0.0000 0.0000 255.1181 170.0787"
+*PaperDimension w255h397/面单 90×140: "255.1181 396.8504"
+*ImageableArea w255h397/面单 90×140: "0.0000 0.0000 255.1181 396.8504"
+*PaperDimension w283h113/标签 100×40: "283.4646 113.3858"
+*ImageableArea w283h113/标签 100×40: "0.0000 0.0000 283.4646 113.3858"
+*PaperDimension w283h142/面单 100×50: "283.4646 141.7323"
+*ImageableArea w283h142/面单 100×50: "0.0000 0.0000 283.4646 141.7323"
+*PaperDimension w283h170/面单 100×60: "283.4646 170.0787"
+*ImageableArea w283h170/面单 100×60: "0.0000 0.0000 283.4646 170.0787"
+*PaperDimension w283h198/标签 100×70: "283.4646 198.4252"
+*ImageableArea w283h198/标签 100×70: "0.0000 0.0000 283.4646 198.4252"
+*PaperDimension w283h227/面单 100×80: "283.4646 226.7717"
+*ImageableArea w283h227/面单 100×80: "0.0000 0.0000 283.4646 226.7717"
+*PaperDimension w283h255/标签 100×90: "283.4646 255.1181"
+*ImageableArea w283h255/标签 100×90: "0.0000 0.0000 283.4646 255.1181"
+*PaperDimension w283h283/面单 100×100: "283.4646 283.4646"
+*ImageableArea w283h283/面单 100×100: "0.0000 0.0000 283.4646 283.4646"
+*PaperDimension w283h340/面单 100×120: "283.4646 340.1575"
+*ImageableArea w283h340/面单 100×120: "0.0000 0.0000 283.4646 340.1575"
+*PaperDimension w283h425/面单 100×150: "283.4646 425.1969"
+*ImageableArea w283h425/面单 100×150: "0.0000 0.0000 283.4646 425.1969"
+*PaperDimension w283h510/面单 100×180: "283.4646 510.2362"
+*ImageableArea w283h510/面单 100×180: "0.0000 0.0000 283.4646 510.2362"
+*PaperDimension w283h567/面单 100×200: "283.4646 566.9291"
+*ImageableArea w283h567/面单 100×200: "0.0000 0.0000 283.4646 566.9291"
+*PaperDimension w283h595/面单 100×210: "283.4646 595.2756"
+*ImageableArea w283h595/面单 100×210: "0.0000 0.0000 283.4646 595.2756"
+*PaperDimension w283h624/面单 100×220: "283.4646 623.6220"
+*ImageableArea w283h624/面单 100×220: "0.0000 0.0000 283.4646 623.6220"
+*PaperDimension w283h652/面单 100×230: "283.4646 651.9685"
+*ImageableArea w283h652/面单 100×230: "0.0000 0.0000 283.4646 651.9685"
+*HWMargins: 0 0 0 0
+*CloseGroup: General
+
+*OpenUI *Resolution/Output Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 300dpi
+*Resolution 203dpi/203 dpi: "<</HWResolution[203 203]>>setpagedevice"
+*Resolution 300dpi/300 dpi: "<</HWResolution[300 300]>>setpagedevice"
+*Resolution 600dpi/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
+*CloseUI: *Resolution
+
+*% ── 以下配置存在 Mac 侧 PPD 里，CUPS 每次作业都会传给驱动 ──
+*% 打印机掉电、重启、换纸都不会丢；改这里等于改这台机器以后每次打印的默认值
+*OpenUI *DeliDpi/DeliDpi: PickOne
+*OrderDependency: 30 AnySetup *DeliDpi
+*DefaultDeliDpi: 300
+*DeliDpi 300/dots per inch: ""
+*CloseUI: *DeliDpi
+*OpenUI *DeliSizeW/DeliSizeW: PickOne
+*OrderDependency: 30 AnySetup *DeliSizeW
+*DefaultDeliSizeW: 100.0
+*DeliSizeW 100.0/物理宽度 mm: ""
+*CloseUI: *DeliSizeW
+*OpenUI *DeliSizeH/DeliSizeH: PickOne
+*OrderDependency: 30 AnySetup *DeliSizeH
+*DefaultDeliSizeH: 100
+*DeliSizeH 100/物理高度 mm: ""
+*CloseUI: *DeliSizeH
+*OpenUI *DeliGap/DeliGap: PickOne
+*OrderDependency: 30 AnySetup *DeliGap
+*DefaultDeliGap: 2.0
+*DeliGap 2.0/标签间隙 mm: ""
+*CloseUI: *DeliGap
+*OpenUI *DeliDensity/DeliDensity: PickOne
+*OrderDependency: 30 AnySetup *DeliDensity
+*DefaultDeliDensity: 8
+*DeliDensity 8/浓度 0-15: ""
+*CloseUI: *DeliDensity
+*OpenUI *DeliSpeed/DeliSpeed: PickOne
+*OrderDependency: 30 AnySetup *DeliSpeed
+*DefaultDeliSpeed: 4
+*DeliSpeed 4/速度: ""
+*CloseUI: *DeliSpeed
+*OpenUI *DeliDirection/DeliDirection: PickOne
+*OrderDependency: 30 AnySetup *DeliDirection
+*DefaultDeliDirection: 1
+*DeliDirection 1/走纸方向: ""
+*CloseUI: *DeliDirection
+*OpenUI *DeliRotate180/DeliRotate180: PickOne
+*OrderDependency: 30 AnySetup *DeliRotate180
+*DefaultDeliRotate180: 1
+*DeliRotate180 1/旋转 180 度: ""
+*CloseUI: *DeliRotate180
+*OpenUI *DeliInvert/DeliInvert: PickOne
+*OrderDependency: 30 AnySetup *DeliInvert
+*DefaultDeliInvert: 1
+*DeliInvert 1/位图极性: ""
+*CloseUI: *DeliInvert
+*OpenUI *DeliTearOff/DeliTearOff: PickOne
+*OrderDependency: 30 AnySetup *DeliTearOff
+*DefaultDeliTearOff: 1
+*DeliTearOff 1/走纸到撕纸位: ""
+*CloseUI: *DeliTearOff
+*OpenUI *DeliOffsetY/DeliOffsetY: PickOne
+*OrderDependency: 30 AnySetup *DeliOffsetY
+*DefaultDeliOffsetY: 0
+*DeliOffsetY 0/纵向微调 dot: ""
+*CloseUI: *DeliOffsetY
+
+*OpenUI *PBPdl/指令集: PickOne
+*OrderDependency: 30 AnySetup *PBPdl
+*DefaultPBPdl: tspl
+*PBPdl tspl/tspl: ""
+*PBPdl zpl/zpl: ""
+*PBPdl escpos/escpos: ""
+*PBPdl passthrough/passthrough: ""
+*CloseUI: *PBPdl
+
+*OpenUI *PBMediaType/介质类型: PickOne
+*OrderDependency: 30 AnySetup *PBMediaType
+*DefaultPBMediaType: gap
+*PBMediaType gap/gap: ""
+*PBMediaType blackmark/blackmark: ""
+*PBMediaType continuous/continuous: ""
+*CloseUI: *PBMediaType
+
+*DefaultFont: Courier
+*Font Courier: Standard "(001.001)" Standard ROM
+
+*% 纸型总数：52

@@ -1,0 +1,46 @@
+name: 机型报告 / 请求支持
+description: 报告一台打印机能不能用，或请求新增机型
+labels: ["printer"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        最有价值的信息是 `device-id` 里的 `CMD:` 字段 —— 有它就能直接支持，不用猜。
+  - type: input
+    id: model
+    attributes:
+      label: 机型
+      placeholder: 得力 DL-888D PRO / Zebra ZD421
+    validations:
+      required: true
+  - type: textarea
+    id: lpinfo
+    attributes:
+      label: lpinfo 输出
+      description: |
+        macOS 终端执行下面这条，把结果整段贴进来：
+        ```
+        lpinfo -l -v | grep -B2 -A3 usb
+        ```
+      render: shell
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: 现在是什么情况
+      options:
+        - 装完能打，效果正常
+        - 能打，但内容倒置 / 镜像
+        - 能打，但尺寸不对（不是 1:1）
+        - 能打，但打出来是黑底白字
+        - 装完提示「未知机型」
+        - 装完提示「不支持」
+        - 队列跑不起来 / 作业卡住
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 补充说明
+      description: 纸张规格（宽×高 mm）、间隙、用的什么软件打印（WPS / 浏览器 / 电商后台）

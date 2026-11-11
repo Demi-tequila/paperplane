@@ -1,0 +1,11 @@
+Diagnostics/matrix.json
+Diagnostics/*.png
+Diagnostics/*.bmp
+bin/paperplane
+*.pkg
+*.zip
+__pycache__/
+*.pyc
+.DS_Store
+build/
+.github/workflows/

@@ -1,0 +1,35 @@
+name: 缺陷报告
+description: 装不上、打不出、结果不对
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 期望的结果 vs 实际的结果
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: 环境
+      description: macOS 版本、芯片（Intel / Apple Silicon）、纸飞机版本
+      placeholder: macOS 26.5.2 / arm64 / 0.5.1
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志
+      description: |
+        ```
+        lpstat -p
+        tail -40 /tmp/paperplane-filter.log
+        ```
+      render: shell
+  - type: checkboxes
+    id: guard
+    attributes:
+      label: 确认
+      options:
+        - label: 我知道贴日志可能含打印机型号与文件路径

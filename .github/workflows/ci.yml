@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: build + lint
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 编译驱动（arm64 + x86_64）
+        run: |
+          clang -O2 -Wall -Wextra -Werror \
+            -arch arm64 -arch x86_64 \
+            -o paperplane src/paperplane.c -lcups
+          lipo -archs paperplane
+
+      - name: 生成 PPD 并校验
+        run: |
+          python3 scripts/gen_ppd.py --filter /Library/Printers/PaperPlane/paperplane --out drivers
+          for f in drivers/*.ppd; do
+            echo "== $f"
+            cupstestppd "$f" || true   # 只有 Adobe 标准名 WARN，不给 rc 设门禁
+          done
+
+      - name: 机型库格式校验（每行必须 9 列、必须有出处）
+        run: |
+          python3 - <<'PY'
+          import sys, re
+          from pathlib import Path
+          bad = 0
+          for ln, line in enumerate(Path("data/models.tsv").read_text(encoding="utf-8-sig").splitlines(), 1):
+              s = line.strip()
+              if not s or s.startswith("#"):
+                  continue
+              p = s.split("\t")
+              if len(p) != 9:
+                  print(f"行 {ln}: 字段 {len(p)} 个，应为 9"); bad += 1; continue
+              fam, rx, dpi, w, cut, ev, src, note, sample = p
+              if fam not in ("tspl_label","system_native_label","escpos_receipt","escpos_label","sheet_native","unsupported"):
+                  print(f"行 {ln}: 未知族 {fam}"); bad += 1
+              if ev not in ("measured","vendor-spec"):
+                  print(f"行 {ln}: evidence={ev} 不合法"); bad += 1
+              if not src.strip():
+                  print(f"行 {ln}: 缺少出处"); bad += 1
+              if not re.search(rx, sample.lower()):
+                  print(f"行 {ln}: 样例 {sample!r} 不被自身正则命中"); bad += 1
+              if fam != "unsupported" and (dpi == "0" or w == "0"):
+                  print(f"行 {ln}: dpi/幅宽为 0 但族不是 unsupported"); bad += 1
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: shell 语法与静态检查
+        run: |
+          bash -n install.sh
+          bash -n uninstall.sh
+          bash -n lib/resolve.sh
+          if command -v shellcheck >/dev/null; then shellcheck -S warning install.sh uninstall.sh lib/resolve.sh || true; fi
+
+      - name: 判定阶梯离线自检（不需要装驱动）
+        run: |
+          python3 - <<'PY'
+          import subprocess
+          cases = [
+              ("Zebra ZD421", "ZPL,EPL,CPCL", "system_native_label"),
+              ("Zebra ZD421", "PCL,PCLXL", "sheet_native"),
+              ("HPRT SL42", "", "tspl_label"),
+              ("Acme LP-9000", "", "unknown"),
+              ("Niimbot B21", "", "unsupported"),
+          ]
+          bad = 0
+          for mm, cmd, want in cases:
+              out = subprocess.check_output(["bash","lib/resolve.sh",mm,cmd]).decode().split()
+              got = out[0] if out else "?"
+              if got != want:
+                  print(f"FAIL {mm!r}/{cmd!r} → {got}，应为 {want}"); bad += 1
+          print("阶梯用例全部通过" if not bad else f"{bad} 条失败")
+          raise SystemExit(1 if bad else 0)
+          PY
